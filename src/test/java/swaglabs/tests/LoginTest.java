@@ -27,7 +27,7 @@ public class LoginTest {
 		//
 		naviagte.toLoginPage();
 		login.intoSauceDemo();
-		assertThat(catalog.getHeadingText()).isEqualTo("Catalog");
+		assertThat(catalog.getHeadingText()).isEqualTo("Products");
 	}
 
 }

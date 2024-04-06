@@ -9,6 +9,6 @@ public class CatalogPage extends PageComponent{
 	//
 	@Step("Getting Catalog Page Heading")
 	public String getHeadingText() {
-		return $(By.tagName("h6")).getText();
+		return $(".product_label").getText();
 	}
 }
