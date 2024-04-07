@@ -8,9 +8,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
+import swaglabs.actions.CartActions;
+import swaglabs.actions.CheckoutInfoActions;
+import swaglabs.actions.CheckoutOverviewActions;
 import swaglabs.actions.LoginActions;
 import swaglabs.actions.NavigateActions;
 import swaglabs.actions.ProductActions;
+import swaglabs.pages.OrderFinishPage;
 
 @ExtendWith(SerenityJUnit5Extension.class)
 public class WhenMakingPurchase {
@@ -18,15 +22,17 @@ public class WhenMakingPurchase {
 	NavigateActions naviagte;
 	LoginActions login;
 	ProductActions product;
-//	CartActions cart;
+	CartActions cart;
+	CheckoutInfoActions address;
+	CheckoutOverviewActions order;
 //	OrderActions order;
 //	
-//	FinishPage finish;
+	OrderFinishPage finish;
 //	
 	
 	
 	
-	@Test
+//	@Test
 	@ParameterizedTest
 	@CsvSource(value= {"Sauce Labs Backpack"})
 	public void aSingleItem(String item) {
@@ -34,7 +40,14 @@ public class WhenMakingPurchase {
 		naviagte.toLoginPage();
 		login.intoSauceDemo();
 		product.addOneItem();
-		System.out.println(item);
+		product.switchToCart();
+//		System.out.println(item);
+		cart.checkoutWithCart();
+		address.fillAddressAndContinueCheckout();
+		order.calculateOrderAndFinish();
+		//
+		assertThat(finish.getOrderStatusMessage().contentEquals("THANK YOU FOR YOUR ORDER"));
+		
 //		cart.verifyItems(;
 //		cart.con
 	}
