@@ -1,4 +1,4 @@
-package swaglabs.navigations;
+package swaglabs.actions;
 
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.core.steps.UIInteractions;
