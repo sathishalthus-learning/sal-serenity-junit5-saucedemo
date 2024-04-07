@@ -14,20 +14,19 @@ import swaglabs.pages.ProductsPage;
 @ExtendWith(SerenityJUnit5Extension.class)
 public class WhenLogOn {
 	
-//	@Steps
+	// Actions
 	NavigateActions naviagte;
-//	@Steps
-	ProductsPage catalog;
-//	@Steps
 	LoginActions login;
 	
+	// Pages
+	ProductsPage catalog;
 	
 	@Test
 	public void withValidCredentials() {
 		//
 		naviagte.toLoginPage();
 		login.intoSauceDemo();
-		assertThat(catalog.getHeadingText()).isEqualTo("ProductsPage");
+		assertThat(catalog.getHeadingText()).isEqualTo("Products");
 	}
 
 }
